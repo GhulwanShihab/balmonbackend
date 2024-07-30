@@ -1,12 +1,12 @@
-import { IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { z } from 'zod';
 
-export class CreateVisiMisiDto {
-  @ApiProperty({ example: 'Ini adalah visi', description: 'Visi' })
-  @IsString()
-  visi: string;
+export const CreateVisiMisiSchema = z.object({
+    foto: z.string(),
+    titleVisi: z.string(),
+    titleMisi: z.string(),
+    deskripsiVisi: z.array(z.string()),
+    deskripsiMisi: z.array(z.string()),
+    publishedAt: z.optional(z.string()), 
+});
 
-  @ApiProperty({ example: 'Ini adalah misi', description: 'Misi' })
-  @IsString()
-  misi: string;
-}
+export type CreateVisiMisiDto = z.infer<typeof CreateVisiMisiSchema>;

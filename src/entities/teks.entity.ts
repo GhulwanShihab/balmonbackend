@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Berita} from './berita.entity';
 import { Instagram} from './instagram.entity';
+import { VisiMisi} from './visi-misi.entity';
 
 
 
@@ -16,4 +17,8 @@ export class Teks {
     berita: Berita;
     @ManyToOne(() => Instagram, instagram => instagram.deskripsiInstagram, {nullable: true, onDelete:"CASCADE"})
     instagram: Instagram;
+    @ManyToOne(() => VisiMisi, event => event.deskripsiVisi, {nullable: true, onDelete:"CASCADE"})
+    deskripsiVisi: VisiMisi;
+    @ManyToOne(() => VisiMisi, event => event.deskripsiMisi, {nullable: true, onDelete:"CASCADE"})
+    deskripsiMisi: VisiMisi;
 }
